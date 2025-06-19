@@ -10,7 +10,8 @@ export default function Experience() {
             work_period: "July 2022 - September 2024",
             job_scope: ["Develop dynamic and responsive websites.",
                 "Deliver responsive web and mobile UI designs with cross-browser compatibility.",
-                "Implement backend integration via a RESTful API Assists backend developers in debugging and upgrading.",
+                "Implement backend integration via a RESTful API.",
+                "Assists backend developers in debugging and upgrading.",
                 "Working closely with the designers, software engineers, and project executives to fulfill clients’ needs."
             ]
         },
@@ -22,7 +23,7 @@ export default function Experience() {
             work_period: "August 2019 – March 2021",
             job_scope: ["Develop Gamification education content for special needs using Unity3D.",
                 "Managing website content via Grav CMS.",
-                "General IT support",
+                "Create company social media posts using Adobe tools.",
             ]
         },
         {
@@ -31,9 +32,9 @@ export default function Experience() {
             company_url: "https://www.mindspace.my/",
             work_position: "IT Intern",
             work_period: "April 2019 – July 2019",
-            job_scope: ["Manage company social media posts",
-                "Computer class and mandarin class teaching assistant",
-                "General IT support",
+            job_scope: ["Manage company social media posts.",
+                "Computer class and mandarin class teaching assistant.",
+                "General IT support.",
             ]
         }
     ]

@@ -50,7 +50,7 @@ export default function Header() {
             </h1>
 
             <div className="div-gap">
-                <p>
+                <p className="md:text-justify">
                     Front-End Developer with 2+ years of experience specializing in JavaScript, React, and Node.js, developing websites with a strong emphasis on responsive design, user-centric principles, and accessibility.
                 </p>
 
@@ -64,8 +64,8 @@ export default function Header() {
                 <ul className="flex justify-start items-start print:flex-col gap-3 pl-0">
                     {socialMediaArr && socialMediaArr.map(socialMedia => {
                         return <li className="list-none" key={socialMedia.id}>
-                            <a href={socialMedia.url} target="_blank" aria-label={socialMedia.platform} className="print:hidden block border border-greyish-blue/25 rounded-md p-2 hover:bg-greyish-blue/5">
-                                <span>
+                            <a href={socialMedia.url} target="_blank" aria-label={socialMedia.platform} className="print:hidden block border border-greyish-blue/35 rounded-md p-2 hover:bg-greyish-blue/15">
+                                <span className="text-white">
                                     {socialMedia.icon}
                                 </span>
                             </a>
@@ -80,7 +80,7 @@ export default function Header() {
                     })}
                 </ul>
             </div>
-        </section>
+        </section >
     )
 }
 
