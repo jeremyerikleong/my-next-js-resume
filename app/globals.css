@@ -1,9 +1,18 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0f172a;
-  --textColor: #94a3b8;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --background: #fff;
+  --foreground: #666;
+  --color-greyish-blue: var(--foreground);
+}
+
+@layer theme {
+  .dark {
+    --background: #0f172a;
+    --foreground: #768498;
+  }
 }
 
 @theme inline {
@@ -12,22 +21,12 @@
   --font-sans: var(--font-montserrat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: radial-gradient(600px circle at 0px 0px, rgba(29, 78, 216, 0.15), transparent 80%);
-  background-color: var(--background);
-  color: var(--foreground);
   font-family: "Montserrat", sans-serif;
 }
 
 ::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.25em;
 }
 
 ::-webkit-scrollbar-track {
@@ -35,18 +34,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--textColor);
+  background-color: var(--foreground);
   border-radius: 20px;
 }
 
 /* moz scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--textColor) var(--background);
-}
-
-@theme {
-  --color-greyish-blue: #94a3b8;
+  scrollbar-color: var(--foreground) var(--background);
 }
 
 @layer base {
@@ -66,15 +61,15 @@ body {
   }
 
   h1 {
-    @apply text-3xl font-black;
+    @apply text-3xl font-black text-black dark:text-white;
   }
 
   h2 {
-    @apply text-xl font-bold my-3;
+    @apply text-xl font-bold my-3 text-black dark:text-white;
   }
 
   h3 {
-    @apply text-lg text-white font-medium;
+    @apply text-base font-semibold text-black dark:text-white;
   }
 
   p {
@@ -83,11 +78,14 @@ body {
 }
 
 @layer components {
+  .subheader {
+    @apply text-black dark:text-white;
+  }
   .div-gap {
     @apply mt-4;
   }
 
   .footer-link {
-    @apply text-white cursor-pointer;
+    @apply text-black dark:text-white cursor-pointer;
   }
 }
