@@ -26,7 +26,7 @@ export default function Skills() {
             <ul>
                 {technicalSkillsArr && technicalSkillsArr.map((skill, index) => {
                     return <li key={index}>
-                        <b className="capitalize text-white">{Object.keys(skill)}:</b>
+                        <b className="capitalize subheader">{Object.keys(skill)}:</b>
                         <span className="ml-1 text-greyish-blue">{Object.values(skill)}</span>
                     </li>
                 })}

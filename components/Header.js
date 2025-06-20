@@ -64,8 +64,8 @@ export default function Header() {
                 <ul className="flex justify-start items-start print:flex-col gap-3 pl-0">
                     {socialMediaArr && socialMediaArr.map(socialMedia => {
                         return <li className="list-none" key={socialMedia.id}>
-                            <a href={socialMedia.url} target="_blank" aria-label={socialMedia.platform} className="print:hidden block border border-greyish-blue/35 rounded-md p-2 hover:bg-greyish-blue/15">
-                                <span className="text-white">
+                            <a href={socialMedia.url} target="_blank" aria-label={socialMedia.platform} className="print:hidden block border border-black/50 dark:border-greyish-blue/35 rounded-md p-2 hover:bg-greyish-blue/15">
+                                <span className="subheader">
                                     {socialMedia.icon}
                                 </span>
                             </a>

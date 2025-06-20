@@ -49,7 +49,7 @@ export default function Experience() {
                         <h3>{workExperience.work_position}</h3>
 
                         <p>
-                            <a href={workExperience.company_url} target="_blank" className="text-white cursor-pointer">
+                            <a href={workExperience.company_url} target="_blank" className="subheader cursor-pointer">
                                 {workExperience.company_name}
                             </a> · <span className="text-sm">{workExperience.work_period}</span></p>
                         <ul>

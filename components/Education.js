@@ -32,7 +32,7 @@ export default function Eduction() {
                     <div key={education.id} className="div-gap">
                         <h3>{education.course_name}</h3>
 
-                        <p><span className="text-white">
+                        <p><span className="subheader">
                             {education.college_name}
                         </span> · <span className="text-sm">{education.course_period}</span></p>
                         <ul>
