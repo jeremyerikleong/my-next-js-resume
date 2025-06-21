@@ -11,16 +11,48 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export default function ThemeSwitch() {
+    const size = 20;
+    const [input, setInput] = useState("");
     const [mounted, setMounted] = useState(false);
-    const { setTheme, resolvedTheme } = useTheme();
-
-    const [commandModal, setCommandModal] = useState(false);
+    const { setTheme } = useTheme();
 
     function triggerCommandMenu(evt) {
         if (evt.key === "k" && evt.metaKey) {
             setCommandModal(prev => !prev)
-            console.log("You just pressed control and k");
         }
+    }
+
+    const [commandModal, setCommandModal] = useState(false);
+    const commandMenu = [{
+        id: "1",
+        command: [{
+            id: "1",
+            icon: <IoPrintOutline size={size} />,
+            title: "print",
+        }],
+        category: "action",
+    }, {
+        id: "2",
+        command: [{
+            id: "1",
+            icon: <MdOutlineLightMode size={size} />,
+            title: "light",
+        },
+        {
+            id: "2",
+            icon: <MdOutlineDarkMode size={size} />,
+            title: "dark",
+        },
+        {
+            id: "3",
+            icon: <MdLaptop size={size} />,
+            title: "system",
+        }],
+        category: "theme",
+    }]
+
+    function handleCommandMenuInput(evt) {
+        setInput(evt.target.value);
     }
 
     useEffect(() => setMounted(true), [])
@@ -39,49 +71,32 @@ export default function ThemeSwitch() {
     if (mounted)
         return (
             <>
-                {commandModal && <div className={`${commandModal ? 'flex' : 'hidden'} fixed top-0 left-0 z-99 w-full h-full px-4 bg-black/50 justify-center items-center`} onClick={closeCommandMenu}>
-                    <div className="w-lg md:w-2xl mx-auto bg-[#fff] dark:bg-[#0f172a] text-black dark:text-greyish-blue rounded-md border border-greyish-blue/25" onClick={(evt) => evt.stopPropagation()}>
-                        <div className="flex items-center px-4 py-2 border-b border-greyish-blue/25 relative">
-                            <HiMiniMagnifyingGlass size={20} />
-                            <input type="text" placeholder="Type a command or search..." className="w-full h-[36px] ml-2 focus:outline-none placeholder:text-sm" />
+                {commandModal && <div className={`${commandModal ? 'flex' : 'hidden'} pop-up-overlay`} onClick={closeCommandMenu}>
+                    <div className="pop-up-menu" onClick={(evt) => evt.stopPropagation()}>
+                        <div className="command-menu-input-container">
+                            <HiMiniMagnifyingGlass size={size} />
+                            <input type="text" placeholder="Type a command or search..." value={input} className="command-menu-input" onInput={handleCommandMenuInput} />
 
                             <span className="cursor-pointer" onClick={closeCommandMenu}>
-                                <MdClose size={20} />
+                                <MdClose size={size} />
                             </span>
                         </div>
 
                         <div className="p-2">
-                            <div className="">
-                                <div className="text-xs p-2">Actions</div>
-                                <button className="w-full flex items-center rounded-md p-2 hover:bg-slate-200 dark:hover:bg-[#1d283a] cursor-pointer">
-                                    <IoPrintOutline size={20} />
-                                    <span className="ml-2 text-sm">
-                                        Print
-                                    </span>
-                                </button>
-                            </div>
-
-                            <div>
-                                <div className="text-xs p-2">Theme</div>
-                                <button className="w-full flex items-center rounded-md p-2 hover:bg-slate-200 dark:hover:bg-[#1d283a] cursor-pointer" onClick={() => setTheme('light')}>
-                                    <MdOutlineLightMode size={20} />
-                                    <span className="ml-2 text-sm">
-                                        Light
-                                    </span>
-                                </button>
-                                <button className="w-full flex items-center rounded-md p-2 hover:bg-slate-200 dark:hover:bg-[#1d283a] cursor-pointer" onClick={() => setTheme('dark')}>
-                                    <MdOutlineDarkMode size={20} />
-                                    <span className="ml-2 text-sm">
-                                        Dark
-                                    </span>
-                                </button>
-                                <button className="w-full flex items-center rounded-md p-2 hover:bg-slate-200 dark:hover:bg-[#1d283a] cursor-pointer" onClick={() => setTheme('system')}>
-                                    <MdLaptop size={20} />
-                                    <span className="ml-2 text-sm">
-                                        System
-                                    </span>
-                                </button>
-                            </div>
+                            {commandMenu?.map(menu => (
+                                <div key={menu.id} >
+                                    <div className="command-menu-list-header">{menu.category}</div>
+                                    {menu?.command.map(command => (
+                                        <button key={`command${command.id}`} className="command-menu-list" onClick={() => setTheme(command.title)}>
+                                            {command.icon}
+                                            <span className="command-menu-list-text">
+                                                {command.title}
+                                            </span>
+                                        </button>
+                                    )
+                                    )}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

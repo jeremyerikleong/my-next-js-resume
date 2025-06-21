@@ -81,8 +81,40 @@ body {
   .subheader {
     @apply text-black dark:text-white;
   }
+
   .div-gap {
     @apply mt-4;
+  }
+
+  .pop-up-overlay {
+    @apply fixed top-0 left-0 z-99 w-full h-full px-4 bg-black/50 justify-center items-center;
+  }
+
+  .pop-up-menu {
+    @apply w-lg md:w-2xl mx-auto bg-[#fff] dark:bg-[#0f172a] text-black dark:text-greyish-blue rounded-md border border-greyish-blue/25;
+  }
+
+  .command-menu {
+  }
+
+  .command-menu-input-container {
+    @apply flex items-center px-4 py-2 border-b border-greyish-blue/25 relative;
+  }
+
+  .command-menu-input {
+    @apply w-full h-[36px] ml-2 focus:outline-none placeholder:text-sm;
+  }
+
+  .command-menu-list-header {
+    @apply text-xs p-2 capitalize;
+  }
+
+  .command-menu-list {
+    @apply w-full flex items-center rounded-md p-2 text-black dark:text-white hover:bg-slate-200 dark:hover:bg-[#1d283a] cursor-pointer;
+  }
+
+  .command-menu-list-text {
+    @apply ml-2 text-sm capitalize;
   }
 
   .footer-link {
